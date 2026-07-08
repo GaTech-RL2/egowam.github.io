@@ -259,11 +259,34 @@ function makeTabs(options, onChange, initial) {
 
 function mountSingleVideo(sel, path, label, withControls, opts) {
   const mount = $(sel);
-  if (!mount) return;
+  if (!mount) return null;
   const m = makeMedia(path, label, opts);
   m.classList.add('hero-video');
   if (path && withControls) m.controls = true;
   mount.append(m);
+  return m;
+}
+
+// Best-effort "autoplay with sound" for the hero teaser. Browsers block
+// sound-on autoplay until the visitor engages, so if the unmuted play() is
+// rejected we start muted and unmute on the first user interaction.
+function autoplayWithSound(v) {
+  if (!v || v.tagName !== 'VIDEO') return;
+  v.muted = false;
+  const p = v.play();
+  if (p && p.catch) {
+    p.catch(() => {
+      v.muted = true;
+      v.play().catch(() => {});
+      const events = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+      const unmute = () => {
+        v.muted = false;
+        v.play().catch(() => {});
+        events.forEach((e) => window.removeEventListener(e, unmute));
+      };
+      events.forEach((e) => window.addEventListener(e, unmute, { passive: true }));
+    });
+  }
 }
 
 function renderDataGallery() {
@@ -1058,9 +1081,10 @@ function imgSlot(path, label, cls) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  mountSingleVideo('#teaser-video-mount', CONFIG.teaserVideo,
-    'Insert teaser video<br><small>videos/teaser.mp4</small>', false,
-    { muted: true, loop: true, autoplay: true }); // hero teaser: autoplay muted loop
+  const teaser = mountSingleVideo('#teaser-video-mount', CONFIG.teaserVideo,
+    'Insert teaser video<br><small>videos/teaser.mp4</small>', true,
+    { muted: false, loop: true, autoplay: true }); // hero teaser: autoplay with sound
+  autoplayWithSound(teaser);
   mountSingleVideo('#explanation-video-mount', CONFIG.explanationVideo,
     'Insert explanation video<br><small>videos/explanation.mp4</small>', true,
     { muted: false, loop: false, autoplay: false }); // narrated: play on demand w/ sound
