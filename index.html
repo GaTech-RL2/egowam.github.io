@@ -39,20 +39,14 @@
       <!-- <span class="affiliation" style="color: #555; text-align: center; font-size: 20px; margin-top: 6px;">CoRL 2026 Submission</span> -->
     </div>
 
-    <!-- Quick Links — hidden during anonymous review; un-comment and add URLs after review -->
-    <!--
+    <!-- Quick Links — placeholders pointing to the current page for now. -->
     <div class="quick-links">
-      <a href="#" target="_blank">[pdf]</a>
-      <a href="#" target="_blank">[arxiv]</a>
-      <a href="#" target="_blank">[code]</a>
+      <a href="#">[Paper]</a>
+      <a href="#">[Code (coming soon)]</a>
     </div>
-    -->
 
-    <!-- ===================== 1. EXPLANATION VIDEO ===================== -->
-    <div id="explanation-video-mount"></div>
-    <p class="figure-caption">
-      <!-- TODO: caption for the explanation video -->
-    </p>
+    <!-- ===================== TEASER VIDEO (hero, on top) ===================== -->
+    <div id="teaser-video-mount"></div>
 
     <!-- ===================== 2. ABSTRACT ===================== -->
     <div class="tagline" id="abstract">Abstract.</div>
@@ -63,6 +57,12 @@
       We introduce <span style="font-variant: small-caps;">EgoWAM</span>, a controlled human-robot co-training framework that fixes the policy backbone, action head, and data mixture while varying only the world prediction target, comparing <b>Pixel</b>, <b>DINO</b>, and <b>3D motion flow</b>.
       Across three real-world bimanual tasks, WAM co-training scales more effectively with in-the-wild egocentric human data than behavior cloning. Pixel-based prediction transfers weakly, while DINO and 3D flow yield substantial gains: DINO improves out-of-distribution object and scene generalization by up to <b>4&times;</b>, and 3D flow improves in-domain performance by <b>20&ndash;30%</b>.
     </div>
+
+    <!-- ===================== OVERVIEW VIDEO (under abstract) ===================== -->
+    <div id="explanation-video-mount"></div>
+    <p class="figure-caption">
+      <!-- TODO: caption for the overview video -->
+    </p>
 
     <!-- ===================== 3. METHOD ===================== -->
     <div class="tagline" id="method">Method.</div>
@@ -153,6 +153,9 @@
     </div>
     <!-- Built by app.js (task switcher + three carousels). Fill paths in CONFIG.dataGallery. -->
     <div id="data-gallery"></div>
+    <p class="figure-caption">
+      Explore more data visualizations in the <a href="https://partners.mecka.ai/egoverse" target="_blank" rel="noopener">EgoVerse data portal</a>.
+    </p>
 
     <!-- ===================== 5. ROBOT DEMOS ===================== -->
     <div class="tagline" id="demos">Robot Demos.</div>

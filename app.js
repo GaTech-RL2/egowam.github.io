@@ -8,7 +8,7 @@
 
 const CONFIG = {
   // ---- 1. Hero teaser + 3. Explanation video --------------------------------
-  teaserVideo:      '',   // e.g. 'videos/teaser.mp4'
+  teaserVideo:      'videos/teaser.mp4',
   explanationVideo: 'videos/explanation.mp4',
 
   // ---- Tasks (shared by Data Gallery + Robot Demos) -------------------------
@@ -1013,6 +1013,9 @@ function imgSlot(path, label, cls) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  mountSingleVideo('#teaser-video-mount', CONFIG.teaserVideo,
+    'Insert teaser video<br><small>videos/teaser.mp4</small>', false,
+    { muted: true, loop: true, autoplay: true }); // hero teaser: autoplay muted loop
   mountSingleVideo('#explanation-video-mount', CONFIG.explanationVideo,
     'Insert explanation video<br><small>videos/explanation.mp4</small>', true,
     { muted: false, loop: false, autoplay: false }); // narrated: play on demand w/ sound
