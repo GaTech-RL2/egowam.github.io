@@ -490,49 +490,29 @@ video.r2s-video-item {
 
 /* New styles for quick links */
 .quick-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  text-align: center;
   margin-top: -10px; /* Adjust to bring closer to caption if needed, or use a positive value for more space */
   margin-bottom: 30px; /* Space before the next section (Abstract tagline) */
 }
 .quick-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   font-family: 'Roboto Mono', monospace;
-  font-size: 16px;
+  font-size: 18px; /* Slightly larger than caption */
   font-weight: bold;
-  color: #fff;
-  background: #1a1a1a;
+  /* color: #337ab7; */ /* Standard link blue, or choose your own */
+  color: #333; /* Change to dark grey */
   text-decoration: none;
-  padding: 8px 18px;
-  border-radius: 999px;
-  border: 1px solid #1a1a1a;
-  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
-}
-.quick-links .ql-icon {
-  width: 18px;
-  height: 18px;
-  flex: none;
+  margin: 0 18px; /* Spacing between links */
+  padding: 5px 8px; /* Add some padding for a button-like feel if desired */
+  /* border: 1px solid transparent; */ /* Optional: for button look */
+  /* border-radius: 4px; */ /* Optional: for button look */
 }
 .quick-links a:hover,
 .quick-links a:focus {
-  text-decoration: none;
-  color: #1a1a1a;
-  background: transparent;
-  transform: translateY(-1px);
-}
-@media (max-width: 700px) {
-  .quick-links { gap: 8px; }
-  .quick-links a { font-size: 14px; padding: 7px 14px; gap: 6px; }
-  .quick-links .ql-icon { width: 16px; height: 16px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .quick-links a { transition: none; }
-  .quick-links a:hover,
-  .quick-links a:focus { transform: none; }
+  text-decoration: underline;
+  /* color: #23527c; */ /* Darker blue on hover */
+  color: #000; /* Optional: Change to black or slightly darker grey on hover */
+  /* background-color: #f0f0f0; */ /* Optional: background for button look on hover */
+  /* border-color: #ccc; */ /* Optional: for button look on hover */
 }
 /* End new styles for quick links */
 
